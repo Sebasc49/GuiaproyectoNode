@@ -3,11 +3,17 @@
 
 //1. IMPORTA LAS DEPENDENCIAS Y MODULOS QUE NECESITAMOS
 import express from 'express';//ECMAS6
-
+import dotenv from 'dotenv'; // dependencia para manejar las variables de entorno
+import { connectionMongo } from './src/config/dataBase.js';
 
 //2. CONFIGURAR EL USO DE NUESTRO SERVIDOR
 const app = express();
-const port = 3000; //3000, 6000, 9000
+dotenv.config();// configurando para poder usar variables de entorno
+connectionMongo();
+
+
+
+const port = process.env.PORT//3000, 6000, 9000
 
 //3. EJECUTAR EL SERVIDOR EN NUESTRO COMPUTADOR
 app.listen(port, ()=>{
